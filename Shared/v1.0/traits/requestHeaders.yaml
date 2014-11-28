@@ -1,0 +1,17 @@
+usage: Request headers for all requests
+headers:
+  Proxy-Authorization:
+    type: string
+    example: d2b2a2a8-2adc-4492-88af-774df475b9fd
+  user-agent:
+    type: string
+    example: Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53
+  Accept-Language:
+    type: string
+    example: en-GB
+  Accept:
+    type: string
+    example: text/json
+  Authorization:
+    type: string
+    example: none if annonymous user journey. 

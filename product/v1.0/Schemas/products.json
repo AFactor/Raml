@@ -1,0 +1,13 @@
+{
+  "title": "products",
+  "type": "array",
+  "items": {
+    "type": [
+      "object",
+      "null"
+    ],
+    "properties": {
+      "$ref": "#product"
+    }
+  }
+}

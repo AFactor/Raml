@@ -1,0 +1,5 @@
+{
+  "pipelineErrorCode": "Pro1234",
+  "errorMessage": "Product not found",
+  "errorSource": "Product Provider"
+}

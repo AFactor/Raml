@@ -1,0 +1,18 @@
+{
+  "title": "Error4xx",
+  "type": "object",
+  "properties": {
+    "pipelineErrorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "errorMessage": {
+      "required": true,
+      "type": "string"
+    },
+    "errorSource": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}

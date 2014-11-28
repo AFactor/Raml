@@ -1,0 +1,5 @@
+{
+  "pipelineErrorCode": "503",
+  "errorMessage": "Gateway timeout connecting to underlying Product Service",
+  "errorSource": "Product service"
+}

@@ -1,0 +1,13 @@
+usage: Apply this to any method that requires an paginated result set.
+description: Some requests require authentication.
+queryParameters:
+    pageSize:
+      description: The number of results per page
+      type: integer
+      example: 20
+      required: false
+    offset:
+        description: The number of results to skip
+        type: number
+        required: false
+        example: 20

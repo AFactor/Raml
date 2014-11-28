@@ -1,0 +1,13 @@
+usage: Apply this to all method that caters for multi tenancy
+description: Some requests require authentication.
+queryParameters:
+    region:
+      description: Two Letter ISO Region Name 
+      type: string
+      example: CZ, UK
+      required: true
+    application:
+        description: Calling application 
+        type: string
+        required: true
+        example: grocery
