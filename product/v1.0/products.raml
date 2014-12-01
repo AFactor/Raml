@@ -7,6 +7,7 @@ traits:
   - requestHeaders: !include ../../Shared/v1.0/traits/requestHeaders.yaml
 schemas:
   - productsSchema: !include schemas/products.json
+  - productSchema: !include schemas/product.json
   - errorSchema: !include ../../shared/v1.0/schemas/error4xx-schema-v1.0.json 
 /{region}/products/:
   get:
@@ -20,8 +21,11 @@ schemas:
     
                http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNB (sort order: default)
     
+    
              Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result.
              In future, it may also call digital content service.
+             
+             The schema below represents product schema. Depending on the input, the idl will return either a product or an array of products. The array of products schema is part of RAML repository.
              
              For the purpose of defining this idl the error code 400 represents all 4xx errors and error code 500 represents all 5xx error.
              
@@ -30,7 +34,7 @@ schemas:
        
    queryParameters:
      productKey:
-      description: delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline.
+      description: delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline. search by GTIN is for future.
       type: string
       required: true
      keyType:
@@ -44,7 +48,7 @@ schemas:
    responses:
       200:
         body:          
-            schema:  productsSchema
+            schema:  productSchema
             example: !include examples/products.json
       400:
         body:

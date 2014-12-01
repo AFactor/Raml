@@ -1,0 +1,467 @@
+<!DOCTYPE HTML><html><head><title>Products API documentation</title><meta http-equiv=X-UA-Compatible content="IE=edge"><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=generator content="https://github.com/kevinrenskers/raml2html 0.30.0"><link rel=stylesheet href=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet href=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css><script type=text/javascript src=http://code.jquery.com/jquery-1.11.0.min.js></script><script type=text/javascript src=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js></script><script type=text/javascript src=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js></script><script type=text/javascript>
+        $(document).ready(function() {
+            $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+
+            $('[data-toggle]').click(function() {
+                var selector = $(this).data('target') + ' pre code';
+                $(selector).each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        });
+    </script><style>
+        .hljs {
+            background: transparent;
+        }
+        .parent {
+            color: #999;
+        }
+        .list-group-item > .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-title > .methods {
+            float: right;
+        }
+        .badge {
+            border-radius: 0;
+            text-transform: uppercase;
+            width: 70px;
+            font-weight: normal;
+            color: #f3f3f6;
+            line-height: normal;
+        }
+        .badge_get {
+            background-color: #63a8e2;
+        }
+        .badge_post {
+            background-color: #6cbd7d;
+        }
+        .badge_put {
+            background-color: #22bac4;
+        }
+        .badge_delete {
+            background-color: #d26460;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .panel-white .panel-heading {
+            background: white;
+        }
+        .tab-pane ul {
+            padding-left: 2em;
+        }
+        .tab-pane h2 {
+            font-size: 1.2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-pane h3 {
+            font-size: 1.1em;
+        }
+        .tab-content {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        #sidebar {
+            margin-top: 30px;
+        }
+        .top-resource-description {
+            border-bottom: 1px solid #ddd;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .panel > .panel-body > .panel-group > .panel:first-child .resource-description {
+            display: none;
+        }
+        .list-group .badge {
+            float: left;
+        }
+        .method_description {
+            margin-left: 85px;
+        }
+        .method_description p:last-child {
+            margin: 0;
+        }
+    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Products API documentation <small>version v1</small></h1><p>http://pipeline.tesco.com/v1</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__products_ class=panel-title>/{region}/products/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__products_><span class=parent></span>/{region}/products/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__products__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__products_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__products__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. Depending on the input, the idl will return either a product or an array of products. The array of products schema is part of RAML repository.</p><p>For the purpose of defining this idl the error code 400 represents all 4xx errors and error code 500 represents all 5xx error.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__products__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/products/</h4></div><div class=modal-body><div class="alert alert-info"><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. Depending on the input, the idl will return either a product or an array of products. The array of products schema is part of RAML repository.</p><p>For the purpose of defining this idl the error code 400 represents all 4xx errors and error code 500 represents all 5xx error.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><ul class="nav nav-tabs"><li class=active><a href=#__region__products__get_request data-toggle=tab>Request</a></li><li><a href=#__region__products__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__products__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>productKey</strong> <em>required (string)</em><p>delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline. search by GTIN is for future.</p></li><li><strong>keyType</strong> <em>required (string)</em><p>type of product key. Possible values:- TPNB, TPNC or GTIN.</p></li><li><strong>orderBy</strong> <em>(string)</em><p>Sort by parameter. Possible values:- default,priceAZ,priceZA,TitleAZ,TitleZA</p></li></ul></div><div class=tab-pane id=__region__products__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "required": false,
+  "properties": {
+    "onlineExclusive": {
+      "required": true,
+      "description": "product only available for sale on dotcom stores",
+      "type": "boolean"
+    },
+    "TPNC": {
+      "required": true,
+      "type": "string",
+      "description": "product id"
+    },
+    "TPNB": {
+      "required": true,
+      "type": "string",
+      "description": "base product id"
+    },
+    "GTIN": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Global Trade Item Number. As of now, we don&#x27;t have GTIN. However, going forward this will be serviced via enterprise product service"
+    },
+    "customerFriendlyDescription": {
+      "required": true,
+      "type": "string",
+      "description": "title"
+    },
+    "description": {
+      "required": true,
+      "type": "string"
+    },
+    "images": {
+      "required": true,
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "name": {
+            "required": true,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "required": true,
+            "type": "string"
+          },
+          "width": {
+            "required": true,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "height": {
+            "required": true,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "default": {
+            "required": true,
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "brand": {
+      "required": true,
+      "type": "string"
+    },
+    "status": {
+      "required": true,
+      "type": "string",
+      "description": "Product status. Possible values.: AvailableForSale,PermanentlyUnavailable, TemporarilyUnavailable.  "
+    },
+    "productInList": {
+      "required": true,
+      "type": "object",
+      "properties": {
+        "favourites": {
+          "required": true,
+          "type": "boolean",
+          "description": "Flag to denote whether product is in favourites. Not valid for anonymous user journey"
+        },
+        "shoppingList": {
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "bulkBuy": {
+      "required": true,
+      "description": "Bulk buy limit attributes",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "groupLimitId": {
+          "required": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "groupLimit": {
+          "required": true,
+          "type": "integer"
+        },
+        "limit": {
+          "required": true,
+          "type": "integer"
+        }
+      }
+    },
+    "primaryTaxonomyId": {
+      "required": true,
+      "description": "The taxonomy node id of the product.",
+      "type": "string"
+    },
+    "primaryTaxonomyName": {
+      "required": true,
+      "type": "string"
+    },
+    "restrictedDeliveryGroup": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "restrictedDeliveryTime": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sellByType": {
+      "required": true,
+      "description": "Possible values. Quantity, Weight, QuantityOrWeight, CatchWeight",
+      "type": "string"
+    },
+    "catchWeight": {
+      "required": true,
+      "description": "CatchWeight values. MinWeight and MaxWeight will provide the range and increment will provide the possible values",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "minWeight": {
+          "required": true,
+          "type": "number"
+        },
+        "maxWeight": {
+          "required": true,
+          "type": "number"
+        },
+        "increment": {
+          "required": true,
+          "type": "number"
+        }
+      }
+    },
+    "price": {
+      "required": true,
+      "type": "object",
+      "properties": {
+        "currency": {
+          "required": true,
+          "type": "string"
+        },
+        "sellingUOM": {
+          "required": true,
+          "type": "string"
+        },
+        "sellingPrice": {
+          "required": true,
+          "type": "number"
+        },
+        "perUnit": {
+          "required": true,
+          "type": "number"
+        },
+        "regularPrice": {
+          "required": true,
+          "description": "To get the regular full price of the product. Currently not supported by GAPI, but supported by enterprise Price service.",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "offers": {
+      "required": false,
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "required": true,
+            "type": "string"
+          },
+          "name": {
+            "required": true,
+            "type": "string"
+          },
+          "category": {
+            "required": true,
+            "description": "possible values. Cashreward, ClubCardPoints",
+            "type": "string"
+          },
+          "validFrom": {
+            "required": true,
+            "type": "string"
+          },
+          "validTo": {
+            "required": true,
+            "type": "string"
+          },
+          "customerFriendlyDescription": {
+            "required": true,
+            "type": "string"
+          },
+          "iconType": {
+            "required": true,
+            "description": "Promotion Sash icon type",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>[
+  {
+    "onlineExclusive": false,
+    "TPNC": "2442424",
+    "TPNB": "07242424",
+    "GTIN": null,
+    "customerFriendlyDescription": "nestle milk choc",
+    "description": "nestle milk choc",
+    "images": [
+      {
+        "id": null,
+        "url": "../small.jpeg",
+        "width": null,
+        "height": null,
+        "default": false
+      },
+      {
+        "id": "med",
+        "url": "../med.jpeg",
+        "width": 90,
+        "height": 70,
+        "default": true
+      }
+    ],
+    "brand": "nestle",
+    "status": "AvailableForSale",
+    "productInList": {
+      "favourites": false,
+      "shoppingList": false
+    },
+    "bulkBuy": {
+      "groupLimitId": null,
+      "groupLimit": 0,
+      "limit": 5
+    },
+    "primaryTaxonomyId": "to_3444",
+    "primaryTaxonomyName": "milk bars",
+    "restrictedDeliveryGroup": null,
+    "restrictedDeliveryTime": null,
+    "sellByType": "catchWeight",
+    "catchWeight": {
+      "minWeight": 1,
+      "maxWeight": 3.5,
+      "increment": 0.5
+    },
+    "price": {
+      "currency": "GBP",
+      "sellingUOM": "EACH",
+      "sellingPrice": 1.52,
+      "perUnit": 1.52,
+      "regularPrice": null
+    },
+    "offers": [
+      {
+        "id": "4222/1",
+        "name": "Buy one get one free",
+        "category": "Cashreward",
+        "validFrom": "2014-11-21T14:11:56.4339045+00:00",
+        "validTo": "2014-11-24T14:11:56.4349046+00:00",
+        "customerFriendlyDescription": "Buy 1 Get 1",
+        "iconType": "2For1"
+      }
+    ]
+  }
+]</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/400 target=_blank>400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "Error4xx",
+  "type": "object",
+  "properties": {
+    "pipelineErrorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "errorMessage": {
+      "required": true,
+      "type": "string"
+    },
+    "errorSource": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "pipelineErrorCode": "404",
+  "errorMessage": "Product(s) not found",
+  "errorSource": "Product Service"
+}</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/500 target=_blank>500</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "Error4xx",
+  "type": "object",
+  "properties": {
+    "pipelineErrorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "errorMessage": {
+      "required": true,
+      "type": "string"
+    },
+    "errorSource": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "pipelineErrorCode": "503",
+  "errorMessage": "Gateway timeout connecting to underlying Product Service",
+  "errorSource": "Product service"
+}</code></pre></small></p></div></div></div></div></div></div></div></div></div></div></div><div class=col-md-3><div id=sidebar class="hidden-print affix" role=complementary><ul class="nav nav-pills nav-stacked"><li><a href=#__region__products_>/{region}/products/</a></li></ul></div></div></div></div></body></html>

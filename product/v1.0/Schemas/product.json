@@ -1,247 +1,252 @@
- {
-      "onlineExclusive": {
-        "required": true,
-        "description": "product only available for sale on dotcom stores",
-        "type": "boolean"
-      },
-      "TPNC": {
-        "required": true,
-        "type": "string",
-        "description": "product id"
-      },
-      "TPNB": {
-        "required": true,
-        "type": "string",
-        "description": "base product id"
-      },
-      "GTIN": {
-        "required": true,
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Global Trade Item Number. As of now, we don't have GTIN. However, going forward this will be serviced via enterprise product service"
-      },
-      "customerFriendlyDescription": {
-        "required": true,
-        "type": "string",
-        "description": "title"
-      },
-      "description": {
-        "required": true,
-        "type": "string"
-      },
-      "images": {
-        "required": true,
-        "type": "array",
-        "items": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "name": {
-              "required": true,
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "url": {
-              "required": true,
-              "type": "string"
-            },
-            "width": {
-              "required": true,
-              "type": [
-                "integer",
-                "null"
-              ]
-            },
-            "height": {
-              "required": true,
-              "type": [
-                "integer",
-                "null"
-              ]
-            },
-            "default": {
-              "required": true,
-              "type": "boolean"
-            }
-          }
-        }
-      },
-      "brand": {
-        "required": true,
-        "type": "string"
-      },
-      "status": {
-        "required": true,
-        "type": "string",
-        "description": "Product status. Possible values.: AvailableForSale,PermanentlyUnavailable, TemporarilyUnavailable.  "
-      },
-      "productInList": {
-        "required": true,
-        "type": "object",
-        "properties": {
-          "favourites": {
-            "required": true,
-            "type": "boolean",
-            "description": "Flag to denote whether product is in favourites. Not valid for anonymous user journey"
-          },
-          "shoppingList": {
-            "required": true,
-            "type": "boolean"
-          }
-        }
-      },
-      "bulkBuy": {
-        "required": true,
-        "description": "Bulk buy limit attributes",
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "required": false,
+  "properties": {
+    "onlineExclusive": {
+      "required": true,
+      "description": "product only available for sale on dotcom stores",
+      "type": "boolean"
+    },
+    "TPNC": {
+      "required": true,
+      "type": "string",
+      "description": "product id"
+    },
+    "TPNB": {
+      "required": true,
+      "type": "string",
+      "description": "base product id"
+    },
+    "GTIN": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Global Trade Item Number. As of now, we don't have GTIN. However, going forward this will be serviced via enterprise product service"
+    },
+    "customerFriendlyDescription": {
+      "required": true,
+      "type": "string",
+      "description": "title"
+    },
+    "description": {
+      "required": true,
+      "type": "string"
+    },
+    "images": {
+      "required": true,
+      "type": "array",
+      "items": {
         "type": [
           "object",
           "null"
         ],
         "properties": {
-          "groupLimitId": {
+          "name": {
             "required": true,
             "type": [
               "string",
               "null"
             ]
           },
-          "groupLimit": {
+          "url": {
             "required": true,
-            "type": "integer"
+            "type": "string"
           },
-          "limit": {
+          "width": {
             "required": true,
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "height": {
+            "required": true,
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "default": {
+            "required": true,
+            "type": "boolean"
           }
         }
-      },
-      "primaryTaxonomyId": {
-        "required": true,
-        "description": "The taxonomy node id of the product.",
-        "type": "string"
-      },
-      "primaryTaxonomyName": {
-        "required": true,
-        "type": "string"
-      },
-      "restrictedDeliveryGroup": {
-        "required": true,
-        "type": [
-          "string",
-          "null"
-        ]
-      },
-      "restrictedDeliveryTime": {
-        "required": true,
-        "type": [
-          "string",
-          "null"
-        ]
-      },
-      "sellByType": {
-        "required": true,
-        "description": "Possible values. Quantity, Weight, QuantityOrWeight, CatchWeight",
-        "type": "string"
-      },
-      "catchWeight": {
-        "required": true,
-        "description": "CatchWeight values. MinWeight and MaxWeight will provide the range and increment will provide the possible values",
+      }
+    },
+    "brand": {
+      "required": true,
+      "type": "string"
+    },
+    "status": {
+      "required": true,
+      "type": "string",
+      "description": "Product status. Possible values.: AvailableForSale,PermanentlyUnavailable, TemporarilyUnavailable.  "
+    },
+    "productInList": {
+      "required": true,
+      "type": "object",
+      "properties": {
+        "favourites": {
+          "required": true,
+          "type": "boolean",
+          "description": "Flag to denote whether product is in favourites. Not valid for anonymous user journey"
+        },
+        "shoppingList": {
+          "required": true,
+          "type": "boolean"
+        }
+      }
+    },
+    "bulkBuy": {
+      "required": true,
+      "description": "Bulk buy limit attributes",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "groupLimitId": {
+          "required": true,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "groupLimit": {
+          "required": true,
+          "type": "integer"
+        },
+        "limit": {
+          "required": true,
+          "type": "integer"
+        }
+      }
+    },
+    "primaryTaxonomyId": {
+      "required": true,
+      "description": "The taxonomy node id of the product.",
+      "type": "string"
+    },
+    "primaryTaxonomyName": {
+      "required": true,
+      "type": "string"
+    },
+    "restrictedDeliveryGroup": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "restrictedDeliveryTime": {
+      "required": true,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sellByType": {
+      "required": true,
+      "description": "Possible values. Quantity, Weight, QuantityOrWeight, CatchWeight",
+      "type": "string"
+    },
+    "catchWeight": {
+      "required": true,
+      "description": "CatchWeight values. MinWeight and MaxWeight will provide the range and increment will provide the possible values",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "minWeight": {
+          "required": true,
+          "type": "number"
+        },
+        "maxWeight": {
+          "required": true,
+          "type": "number"
+        },
+        "increment": {
+          "required": true,
+          "type": "number"
+        }
+      }
+    },
+    "price": {
+      "required": true,
+      "type": "object",
+      "properties": {
+        "currency": {
+          "required": true,
+          "type": "string"
+        },
+        "sellingUOM": {
+          "required": true,
+          "type": "string"
+        },
+        "sellingPrice": {
+          "required": true,
+          "type": "number"
+        },
+        "perUnit": {
+          "required": true,
+          "type": "number"
+        },
+        "regularPrice": {
+          "required": true,
+          "description": "To get the regular full price of the product. Currently not supported by GAPI, but supported by enterprise Price service.",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "offers": {
+      "required": false,
+      "type": "array",
+      "items": {
         "type": [
           "object",
           "null"
         ],
         "properties": {
-          "minWeight": {
-            "required": true,
-            "type": "number"
-          },
-          "maxWeight": {
-            "required": true,
-            "type": "number"
-          },
-          "increment": {
-            "required": true,
-            "type": "number"
-          }
-        }
-      },
-      "price": {
-        "required": true,
-        "type": "object",
-        "properties": {
-          "currency": {
+          "id": {
             "required": true,
             "type": "string"
           },
-          "sellingUOM": {
+          "name": {
             "required": true,
             "type": "string"
           },
-          "sellingPrice": {
+          "category": {
             "required": true,
-            "type": "number"
+            "description": "possible values. Cashreward, ClubCardPoints",
+            "type": "string"
           },
-          "perUnit": {
+          "validFrom": {
             "required": true,
-            "type": "number"
+            "type": "string"
           },
-          "regularPrice": {
+          "validTo": {
             "required": true,
-            "description": "To get the regular full price of the product. Currently not supported by GAPI, but supported by enterprise Price service.",
-            "type": [
-              "number",
-              "null"
-            ]
-          }
-        }
-      },
-      "offers": {
-        "required": false,
-        "type": "array",
-        "items": {
-          "type": [
-            "object",
-            "null"
-          ],
-          "properties": {
-            "id": {
-              "required": true,
-              "type": "string"
-            },
-            "name": {
-              "required": true,
-              "type": "string"
-            },
-            "category": {
-              "required": true,
-              "description": "possible values. Cashreward, ClubCardPoints",
-              "type": "string"
-            },
-            "validFrom": {
-              "required": true,
-              "type": "string"
-            },
-            "validTo": {
-              "required": true,
-              "type": "string"
-            },
-            "customerFriendlyDescription": {
-              "required": true,
-              "type": "string"
-            },
-            "iconType": {
-              "required": true,
-              "description": "Promotion Sash icon type",
-              "type": "string"
-            }
+            "type": "string"
+          },
+          "customerFriendlyDescription": {
+            "required": true,
+            "type": "string"
+          },
+          "iconType": {
+            "required": true,
+            "description": "Promotion Sash icon type",
+            "type": "string"
           }
         }
       }
     }
- 
+  }
+}
