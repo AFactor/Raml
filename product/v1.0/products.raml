@@ -8,7 +8,7 @@ traits:
 schemas:
   - productsSchema: !include schemas/products.json
   - productSchema: !include schemas/product.json
-  - errorSchema: !include ../../shared/v1.0/schemas/error4xx-schema-v1.0.json 
+  - errorSchema: !include ../../shared/v1.0/schemas/error4xx.json 
 /{region}/products/:
   get:
    is: [requestHeaders]
