@@ -8,7 +8,8 @@ traits:
   - multiTenanted: !include ../../Shared/v1.0/traits/multiTenanted.yaml
   - paginated: !include ../../Shared/v1.0/traits/paginated.yaml
 schemas:
-  - taxonomySchema: !include Schemas/taxonomy.json
+  - taxonomySchema: !include Schemas/taxonomies.json
+  - taxonomyDetailSchema: !include Schemas/taxonomy.json
   - errorSchema: !include ../../shared/v1.0/schemas/error4xx.json
 /{region}/taxonomies/:
   get:
@@ -19,51 +20,62 @@ schemas:
         
         Based on the current design this endpoint will call range(productLocation) service to aggregate the result.
         In future, it may also call digital content service.
-         
-            1. Fetching default taxonomy from the top
-            Request URL : https://pipeline.tesco.com/v1/taxonomy/
+        
+        
+        1. Fetching default taxonomy from the top
+        Request URL :  http://pipeline.tesco.com/v1/uk/taxonomies/
             
-            2. Fetching all hierarchies from a particular point in taxonomy. id determines the point.
-            Request URL : https://pipeline.tesco.com/v1/taxonomy/?id=4294793660
+        2. Fetching all hierarchies from a particular point in taxonomy. id determines the point.
+        Request URL : https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660
             
-            3. Fetching hierarchies from the top. Depth determines the level of hierarchy to return.
-            Request URL : https://pipeline.tesco.com/v1/taxonomy/?id=4294793660&depth=d
+        3. Fetching hierarchies from the top. Depth determines the level of hierarchy to return.
+        Request URL : https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660&depth=d            
             
-            4. Fetching taxonomy where the default locationId will be overridden by location id passed in query string.
-            Request URL : https://pipeline.tesco.com/v1/taxonomy/?locationId=2026
-            
-            5. Fetching taxonomy for users in pet food segment.
-            Request URL : https://pipeline.tesco.com/v1/taxonomy/?segment=loyalCustomer
-            
-            For the purpose of defining this idl the error code 400 represents all 4xx errors and error code 500 represents all 5xx error.
-            Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the
-            schema outlined.
    queryParameters:
     id:
       description: The taxonomy id of the hierarchy that will be used as the starting point. If none supplied, returns the hierarchy from the root
       type: string
       example: "4294793660"
-      required: false
-    locationId:
-      description: The location for which to retrieve the display hierarchy. Default will retrieve a generic display hierarchy
-      type: string
-      example: "2026"
-      required: false
+      required: false    
     depth:
       description: The number of levels of the hierarchy to return. Default all levels
       type: string
       example: "2"
-      required: false
-    segment:
-      description: customer segment
-      type: string
-      example: "loyalCustomer"
-      required: false
+      required: false 
    responses:
     200:
       body:
         application/json:
             schema: taxonomySchema
+            example: !include Examples/taxonomies.json
+    400:
+      body:
+          application/json:
+            schema:  errorSchema
+            example: !include examples/error4xx.json
+    500:
+        body:
+          application/json:
+            schema:  errorSchema
+            example: !include examples/error5xx.json
+/{region}/taxonomy/{id}:
+  get:
+   is: [ requestHeaders,paginated]
+   description: |
+        Get a taxonomy node with paginated product list.
+        Based on the current design this endpoint will call range(productLocation), product, price and promotion service to aggregate the result.
+        In future, it may also call digital content service.
+        
+        Example.
+        Get node details including paginated products
+        Request URL :  http://pipeline.tesco.com/v1/uk/taxonomy/4294793660?orderBy=priceAZ&pageSize=20&offset=40
+
+  
+   responses:
+    200:
+      body:
+        application/json:
+            schema: taxonomyDetailSchema
             example: !include Examples/taxonomy.json
     400:
       body:
