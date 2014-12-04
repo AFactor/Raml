@@ -1,0 +1,32 @@
+{
+  "title": "Pipeline Error Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "properties": {
+    "code": {
+      "required": true,
+      "description":"Pipeline Error Code",
+      "type": "string"
+    },
+    "message": {
+      "required": true,
+      "description":"Pipeline Error Message",
+      "type": "string"
+    },
+    "detail": {
+      "required": false,
+      "description":"Additional details from the underlying service. At the minimum, a concatinated string of [Error Code] : [Error Message] from the underlying service",
+      "type": "string"
+    },
+    "source": {
+      "required": true,
+      "description":"Source from where the exception originated - Pipeline or Underlying Service",
+      "type": "string"
+    },
+    "timeStamp": {
+      "required": true,
+      "description":"Pipeline Server time stamp when this exception was thrown",
+      "type": "string"
+    }
+  }
+}
