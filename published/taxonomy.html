@@ -1,0 +1,357 @@
+<!DOCTYPE HTML><html><head><title>Taxonomy API documentation</title><meta http-equiv=X-UA-Compatible content="IE=edge"><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=generator content="https://github.com/kevinrenskers/raml2html 0.30.0"><link rel=stylesheet href=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet href=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css><script type=text/javascript src=http://code.jquery.com/jquery-1.11.0.min.js></script><script type=text/javascript src=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js></script><script type=text/javascript src=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js></script><script type=text/javascript>
+        $(document).ready(function() {
+            $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+
+            $('[data-toggle]').click(function() {
+                var selector = $(this).data('target') + ' pre code';
+                $(selector).each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        });
+    </script><style>
+        .hljs {
+            background: transparent;
+        }
+        .parent {
+            color: #999;
+        }
+        .list-group-item > .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-title > .methods {
+            float: right;
+        }
+        .badge {
+            border-radius: 0;
+            text-transform: uppercase;
+            width: 70px;
+            font-weight: normal;
+            color: #f3f3f6;
+            line-height: normal;
+        }
+        .badge_get {
+            background-color: #63a8e2;
+        }
+        .badge_post {
+            background-color: #6cbd7d;
+        }
+        .badge_put {
+            background-color: #22bac4;
+        }
+        .badge_delete {
+            background-color: #d26460;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .panel-white .panel-heading {
+            background: white;
+        }
+        .tab-pane ul {
+            padding-left: 2em;
+        }
+        .tab-pane h2 {
+            font-size: 1.2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-pane h3 {
+            font-size: 1.1em;
+        }
+        .tab-content {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        #sidebar {
+            margin-top: 30px;
+        }
+        .top-resource-description {
+            border-bottom: 1px solid #ddd;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .panel > .panel-body > .panel-group > .panel:first-child .resource-description {
+            display: none;
+        }
+        .list-group .badge {
+            float: left;
+        }
+        .method_description {
+            margin-left: 85px;
+        }
+        .method_description p:last-child {
+            margin: 0;
+        }
+    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Taxonomy API documentation <small>version v1.0d</small></h1><p>http://pipeline.tesco.com/v1.0d</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__taxonomies_ class=panel-title>/{region}/taxonomies/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__taxonomies_><span class=parent></span>/{region}/taxonomies/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__taxonomies__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__taxonomies_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__taxonomies__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>Get taxonomy (super department/department/aisle/shelves) to build a hierarchy/navigation. Represents a depth-first traversal of the hierarchy, so you are guaranteed to have met a parent before you meet her children.</p><p>Based on the current design this endpoint will call range(productLocation) service to aggregate the result. In future, it may also call digital content service.</p><ol><li><p>Fetching default taxonomy from the top Request URL : <a href="http://pipeline.tesco.com/v1/uk/taxonomies/">http://pipeline.tesco.com/v1/uk/taxonomies/</a></p></li><li><p>Fetching all hierarchies from a particular point in taxonomy. id determines the point. Request URL : <a href="https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660">https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660</a></p></li><li><p>Fetching hierarchies from the top. Depth determines the level of hierarchy to return. Request URL : <a href="https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660&amp;depth=d">https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660&amp;depth=d</a></p></li></ol></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__taxonomies__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/taxonomies/</h4></div><div class=modal-body><div class="alert alert-info"><p>Get taxonomy (super department/department/aisle/shelves) to build a hierarchy/navigation. Represents a depth-first traversal of the hierarchy, so you are guaranteed to have met a parent before you meet her children.</p><p>Based on the current design this endpoint will call range(productLocation) service to aggregate the result. In future, it may also call digital content service.</p><ol><li><p>Fetching default taxonomy from the top Request URL : <a href="http://pipeline.tesco.com/v1/uk/taxonomies/">http://pipeline.tesco.com/v1/uk/taxonomies/</a></p></li><li><p>Fetching all hierarchies from a particular point in taxonomy. id determines the point. Request URL : <a href="https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660">https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660</a></p></li><li><p>Fetching hierarchies from the top. Depth determines the level of hierarchy to return. Request URL : <a href="https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660&amp;depth=d">https://pipeline.tesco.com/v1/uk/taxonomies/?id=4294793660&amp;depth=d</a></p></li></ol></div><ul class="nav nav-tabs"><li class=active><a href=#__region__taxonomies__get_request data-toggle=tab>Request</a></li><li><a href=#__region__taxonomies__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__taxonomies__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>id</strong> <em>(string)</em><p>The taxonomy id of the hierarchy that will be used as the starting point. If none supplied, returns the hierarchy from the root</p><p><small><strong>Example</strong>:<pre><code>4294793660</code></pre></small></p></li><li><strong>depth</strong> <em>(string)</em><p>The number of levels of the hierarchy to return. Default all levels</p><p><small><strong>Example</strong>:<pre><code>2</code></pre></small></p></li></ul></div><div class=tab-pane id=__region__taxonomies__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties":false,
+  "required": false,
+  "properties": {
+    "children": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "$ref": "taxonomy.json",
+        "description": "Self referencing taxonomy node",
+        "required": false
+      }
+    },
+    "id": {
+      "type": "string",
+      "description": "Node id",
+      "required": true
+    },
+    "levelName": {
+      "type": "string",
+	  "description": "Node depth level. Eg root,superdepartment, department, aisle, shelf",
+      "required": true
+    },
+    "nodeName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "nodeName": "Root",
+  "id": "Root",
+  "levelNameName": "Root",
+  "children": [
+    {
+      "nodeName": "Fresh Food",
+      "id": "TO_1284175199",
+      "levelName": "SuperDepartment",
+      "children": [
+        {
+          "nodeName": "Fresh Fruit",
+          "id": "TO_02038179352",
+          "levelName": "Department",
+          "children": [
+            {
+              "nodeName": "Apples, Pears &amp; Rhubarb",
+              "id": "TO_1794209734",
+              "levelName": "Aisle",
+              "children": [
+                {
+                  "nodeName": "Cooking Apples",
+                  "id": "TO_0703061265",
+                  "levelName": "Shelf"
+                },
+                {
+                  "nodeName": "Red/Pink Eating Apples",
+                  "id": "TO_1626390530",
+                  "levelName": "Shelf"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/400 target=_blank>400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "Error4xx",
+  "type": "object",
+  "properties": {
+    "pipelineErrorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "errorMessage": {
+      "required": true,
+      "type": "string"
+    },
+    "errorSource": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "pipelineErrorCode": "404",
+  "errorMessage": "Range Service not found",
+  "errorSource": "Range Service"
+}</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/500 target=_blank>500</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "Error4xx",
+  "type": "object",
+  "properties": {
+    "pipelineErrorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "errorMessage": {
+      "required": true,
+      "type": "string"
+    },
+    "errorSource": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "pipelineErrorCode": "503",
+  "errorMessage": "Gateway timeout connecting to underlying range Service",
+  "errorSource": "Range service"
+}</code></pre></small></p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__taxonomy__id_ class=panel-title>/{region}/taxonomy/{id}</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__taxonomy__id_><span class=parent></span>/{region}/taxonomy/{id}</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__taxonomy__id__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__taxonomy__id_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__taxonomy__id__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>Get a taxonomy node with paginated product list. Based on the current design this endpoint will call range(productLocation), product, price and promotion service to aggregate the result. In future, it may also call digital content service.</p><p>Example. Get node details including paginated products Request URL : <a href="http://pipeline.tesco.com/v1/uk/taxonomy/4294793660?orderBy=priceAZ&amp;pageSize=20&amp;offset=40">http://pipeline.tesco.com/v1/uk/taxonomy/4294793660?orderBy=priceAZ&amp;pageSize=20&amp;offset=40</a></p></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__taxonomy__id__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/taxonomy/{id}</h4></div><div class=modal-body><div class="alert alert-info"><p>Get a taxonomy node with paginated product list. Based on the current design this endpoint will call range(productLocation), product, price and promotion service to aggregate the result. In future, it may also call digital content service.</p><p>Example. Get node details including paginated products Request URL : <a href="http://pipeline.tesco.com/v1/uk/taxonomy/4294793660?orderBy=priceAZ&amp;pageSize=20&amp;offset=40">http://pipeline.tesco.com/v1/uk/taxonomy/4294793660?orderBy=priceAZ&amp;pageSize=20&amp;offset=40</a></p></div><ul class="nav nav-tabs"><li class=active><a href=#__region__taxonomy__id__get_request data-toggle=tab>Request</a></li><li><a href=#__region__taxonomy__id__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__taxonomy__id__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>pageSize</strong> <em>(integer)</em><p>The number of results per page</p><p><small><strong>Example</strong>:<pre><code>20</code></pre></small></p></li><li><strong>offset</strong> <em>(number)</em><p>The number of results to skip</p><p><small><strong>Example</strong>:<pre><code>20</code></pre></small></p></li></ul></div><div class=tab-pane id=__region__taxonomy__id__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"required":false,
+	"properties":{
+		"id": {
+			"type":"string",			
+			"required":true
+		},
+		"levelName": {
+			"type":"string",			
+			"required":true
+		},
+		"nodeName": {
+			"type":"string",			
+			"required":true
+		},
+		"productList": {
+			"type":"object",			
+			"required":false,
+			"$ref": "../../../product/v1.0/Schemas/productList.json"			
+		}
+	}
+}
+</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+    "nodeName": "chocolate", 
+    "id": "4294793660", 
+    "levelName": "Aisle",  
+    "productList": {
+        "items": [
+  {
+    "onlineExclusive": false,
+    "TPNC": "2442424",
+    "TPNB": "07242424",
+    "GTIN": "n/a",
+    "customerFriendlyDescription": "nestle milk choc",
+    "description": "nestle milk choc",
+    "images": [
+      {
+        "id": null,
+        "url": "../small.jpeg",
+        "width": 10,
+        "height": 20,
+        "default": false
+      },
+      {
+        "id": "med",
+        "url": "../med.jpeg",
+        "width": 90,
+        "height": 70,
+        "default": true
+      }
+    ],
+    "brand": "nestle",
+    "status": "AvailableForSale",
+    "productInList": {
+      "favourites": false,
+      "shoppingList": false
+    },
+    "bulkBuy": {
+      "groupLimitId": "n/a",
+      "groupLimit": 0,
+      "limit": 5
+    },
+    "primaryTaxonomyId": "to_3444",
+    "primaryTaxonomyName": "milk bars",
+    "restrictedDeliveryGroup": "n/a",
+    "restrictedDeliveryTime": "n/a",
+    "sellByType": "catchWeight",
+    "catchWeight": {
+      "minWeight": 1,
+      "maxWeight": 3.5,
+      "increment": 0.5
+    },
+    "price": {
+      "currency": "GBP",
+      "sellingUOM": "EACH",
+      "sellingPrice": 1.52,
+      "perUnit": 1.52,
+      "regularPrice": 0.0
+    },
+    "offers": [
+      {
+        "id": "4222/1",
+        "name": "Buy one get one free",
+        "category": "Cashreward",
+        "validFrom": "2014-11-21T14:11:56.4339045+00:00",
+        "validTo": "2014-11-24T14:11:56.4349046+00:00",
+        "customerFriendlyDescription": "Buy 1 Get 1",
+        "iconType": "2For1"
+      }
+    ]
+  }
+], 
+        "totalCount": 2
+    }
+}</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/400 target=_blank>400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "Error4xx",
+  "type": "object",
+  "properties": {
+    "pipelineErrorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "errorMessage": {
+      "required": true,
+      "type": "string"
+    },
+    "errorSource": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "pipelineErrorCode": "404",
+  "errorMessage": "Range Service not found",
+  "errorSource": "Range Service"
+}</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/500 target=_blank>500</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "Error4xx",
+  "type": "object",
+  "properties": {
+    "pipelineErrorCode": {
+      "required": true,
+      "type": "string"
+    },
+    "errorMessage": {
+      "required": true,
+      "type": "string"
+    },
+    "errorSource": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "pipelineErrorCode": "503",
+  "errorMessage": "Gateway timeout connecting to underlying range Service",
+  "errorSource": "Range service"
+}</code></pre></small></p></div></div></div></div></div></div></div></div></div></div></div><div class=col-md-3><div id=sidebar class="hidden-print affix" role=complementary><ul class="nav nav-pills nav-stacked"><li><a href=#__region__taxonomies_>/{region}/taxonomies/</a></li><li><a href=#__region__taxonomy__id_>/{region}/taxonomy/{id}</a></li></ul></div></div></div></div></body></html>

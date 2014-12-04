@@ -17,18 +17,17 @@ schemas:
              Extended product information needed for product detail is not captured here. There is a separate endpoint for that.
      
              Example-   
-               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNC&orderBy=priceAZ
+               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&keyType=TPNC&orderBy=priceAZ
     
-               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367keyType=TPNB (sort order: default)
+               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&keyType=TPNB (sort order: default)
     
     
              Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result.
              In future, it may also call digital content service.
              
-             The schema below represents product schema. Depending on the input, the idl will return either a product or an array of products. The array of products schema is part of RAML repository.
+             The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.
              
-             For the purpose of defining this idl the error code 400 represents all 4xx errors and error code 500 represents all 5xx error.
-             
+                          
              Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the
              schema outlined.
        

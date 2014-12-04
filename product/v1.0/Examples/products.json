@@ -3,15 +3,15 @@
     "onlineExclusive": false,
     "TPNC": "2442424",
     "TPNB": "07242424",
-    "GTIN": null,
+    "GTIN": "n/a",
     "customerFriendlyDescription": "nestle milk choc",
     "description": "nestle milk choc",
     "images": [
       {
         "id": null,
         "url": "../small.jpeg",
-        "width": null,
-        "height": null,
+        "width": 10,
+        "height": 20,
         "default": false
       },
       {
@@ -29,14 +29,14 @@
       "shoppingList": false
     },
     "bulkBuy": {
-      "groupLimitId": null,
+      "groupLimitId": "n/a",
       "groupLimit": 0,
       "limit": 5
     },
     "primaryTaxonomyId": "to_3444",
     "primaryTaxonomyName": "milk bars",
-    "restrictedDeliveryGroup": null,
-    "restrictedDeliveryTime": null,
+    "restrictedDeliveryGroup": "n/a",
+    "restrictedDeliveryTime": "n/a",
     "sellByType": "catchWeight",
     "catchWeight": {
       "minWeight": 1,
@@ -48,7 +48,7 @@
       "sellingUOM": "EACH",
       "sellingPrice": 1.52,
       "perUnit": 1.52,
-      "regularPrice": null
+      "regularPrice": 0.0
     },
     "offers": [
       {

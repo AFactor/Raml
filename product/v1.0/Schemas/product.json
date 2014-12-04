@@ -20,11 +20,8 @@
       "description": "base product id"
     },
     "GTIN": {
-      "required": true,
-      "type": [
-        "string",
-        "null"
-      ],
+      "required": false,
+      "type": "string",
       "description": "Global Trade Item Number. As of now, we don't have GTIN. However, going forward this will be serviced via enterprise product service"
     },
     "customerFriendlyDescription": {
@@ -37,20 +34,14 @@
       "type": "string"
     },
     "images": {
-      "required": true,
+      "required": false,
       "type": "array",
       "items": {
-        "type": [
-          "object",
-          "null"
-        ],
+        "type": "object",
         "properties": {
           "name": {
-            "required": true,
-            "type": [
-              "string",
-              "null"
-            ]
+            "required": false,
+            "type": "string"
           },
           "url": {
             "required": true,
@@ -58,17 +49,11 @@
           },
           "width": {
             "required": true,
-            "type": [
-              "integer",
-              "null"
-            ]
+            "type": "integer"
           },
           "height": {
             "required": true,
-            "type": [
-              "integer",
-              "null"
-            ]
+            "type": "integer"
           },
           "default": {
             "required": true,
@@ -87,7 +72,7 @@
       "description": "Product status. Possible values.: AvailableForSale,PermanentlyUnavailable, TemporarilyUnavailable.  "
     },
     "productInList": {
-      "required": true,
+      "required": false,
       "type": "object",
       "properties": {
         "favourites": {
@@ -96,28 +81,22 @@
           "description": "Flag to denote whether product is in favourites. Not valid for anonymous user journey"
         },
         "shoppingList": {
-          "required": true,
+          "required": false,
           "type": "boolean"
         }
       }
     },
     "bulkBuy": {
-      "required": true,
+      "required": false,
       "description": "Bulk buy limit attributes",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "groupLimitId": {
-          "required": true,
-          "type": [
-            "string",
-            "null"
-          ]
+          "required": false,
+          "type": "string"
         },
         "groupLimit": {
-          "required": true,
+          "required": false,
           "type": "integer"
         },
         "limit": {
@@ -136,18 +115,12 @@
       "type": "string"
     },
     "restrictedDeliveryGroup": {
-      "required": true,
-      "type": [
-        "string",
-        "null"
-      ]
+      "required": false,
+      "type": "string"
     },
     "restrictedDeliveryTime": {
-      "required": true,
-      "type": [
-        "string",
-        "null"
-      ]
+      "required": false,
+      "type": "string"
     },
     "sellByType": {
       "required": true,
@@ -155,12 +128,9 @@
       "type": "string"
     },
     "catchWeight": {
-      "required": true,
+      "required": false,
       "description": "CatchWeight values. MinWeight and MaxWeight will provide the range and increment will provide the possible values",
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": "object",
       "properties": {
         "minWeight": {
           "required": true,
@@ -197,12 +167,9 @@
           "type": "number"
         },
         "regularPrice": {
-          "required": true,
+          "required": false,
           "description": "To get the regular full price of the product. Currently not supported by GAPI, but supported by enterprise Price service.",
-          "type": [
-            "number",
-            "null"
-          ]
+          "type": "number"
         }
       }
     },
@@ -210,10 +177,7 @@
       "required": false,
       "type": "array",
       "items": {
-        "type": [
-          "object",
-          "null"
-        ],
+        "type": "object",
         "properties": {
           "id": {
             "required": true,

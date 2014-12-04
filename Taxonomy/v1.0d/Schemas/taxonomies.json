@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties":false,
+  "required": false,
+  "properties": {
+    "children": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "$ref": "taxonomy.json",
+        "description": "Self referencing taxonomy node",
+        "required": false
+      }
+    },
+    "id": {
+      "type": "string",
+      "description": "Node id",
+      "required": true
+    },
+    "levelName": {
+      "type": "string",
+	  "description": "Node depth level. Eg root,superdepartment, department, aisle, shelf",
+      "required": true
+    },
+    "nodeName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
