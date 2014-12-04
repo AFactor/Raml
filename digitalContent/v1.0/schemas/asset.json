@@ -1,0 +1,29 @@
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"required":false,
+	"properties":{
+		"content": {
+			"type":"string",
+			"required":false,
+			"description":"Asset content in case of a text content"
+		},
+		"id": {
+			"type":"string",
+			"required":true,
+			"description":"The unique identifier for the Asset"
+		},
+		"uri": {
+			"type":"string",
+			"required":false,
+			"description":"Asset resource path"
+		},
+		"relatedAssets": {
+			"type": "array",
+			"required": false,
+			"items": {
+				"$ref": "assset.json"
+			}
+		}
+	}
+}

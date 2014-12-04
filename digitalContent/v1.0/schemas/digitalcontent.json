@@ -1,0 +1,20 @@
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"description": "Response Object from the DigitalContent Pipeline",
+	"required":false,
+	"properties":{
+		"assets": {
+			"type":"array",
+			"description": "Array of assets",
+			"required":false,
+			"items": {
+				"$ref": "asset.json"
+			}
+		},
+		"totalCount": {
+			"type":"integer",
+			"required":true
+		}
+	}
+}

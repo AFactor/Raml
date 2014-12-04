@@ -1,0 +1,7 @@
+{
+"code" : "PIPELINE-001",
+"message" : "Exception from Enterprise Service",
+"detail" : "[500] - Internal Server Error",
+"source" : "Enterprise Service",
+"timeStamp" : "2014-12-03T10:10:10"
+}

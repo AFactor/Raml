@@ -1,0 +1,7 @@
+{
+"code" : "PIPELINE-001",
+"message" : "Exception from Enterprise Service",
+"detail" : "[404] - Resource not found",
+"source" : "Enterprise Service",
+"timeStamp" : "2014-12-03T10:10:10"
+}
