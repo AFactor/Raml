@@ -1,0 +1,7 @@
+{
+"code" : "PIPELINE-002",
+"message" : "Exception from Enterprise Service",
+"detail" : "[503] - Gateway timeout connecting to underlying Product Service",
+"source" : "Enterprise Service",
+"timeStamp" : "2014-12-03T10:10:10"
+}

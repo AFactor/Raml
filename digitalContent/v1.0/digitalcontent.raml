@@ -1,28 +1,26 @@
 #%RAML 0.8
 title: Digital Content Pipeline
 version: v1.0
-baseUri: http://pipeline.tesco.com/{version}/{region}/
-documentation:
- - title: Home
-   content: |
-     Digital Content Pipeline will call into the Digital Content API to fetch the marketing content and assets that will be rendered on the UI.
-     Examples:
-     
-     1. Based on Asset ID:
-     http://pipeline.tesco.com/v1/gb/digitalcontent?id=ASSET_ID_00011+ASSET_ID_11234+ASSET_ID_998034
-     
-     2. Query based on Asset metadata:
-     http://pipeline.tesco.com/v1/gb/digitalcontent?metadata=title+summary&queryFilter=category:products
+baseUri: http://pipeline.tesco.com/{version}
+
 traits:  
   - requestHeaders: !include ../../shared/v1.0/traits/requestHeaders.yaml
   - paginated: !include ../../shared/v1.0/traits/paginated.yaml
 schemas:
   - digitalcontentsSchema: !include ./schemas/digitalcontent.json
   - pipelineErrorSchema: !include ../../shared/v1.0/schemas/pipelineError.json
-/digitalcontent:
+/{region}/digitalcontent:
   get:
     is: [requestHeaders, paginated ]
-    description: Get the digital contents.
+    description: |
+           Digital Content Pipeline will call into the Digital Content API to fetch the marketing content and assets that will be rendered on the UI.
+           Examples:
+     
+           1. Based on Asset ID:
+           http://pipeline.tesco.com/v1/gb/digitalcontent?id=ASSET_ID_00011+ASSET_ID_11234+ASSET_ID_998034
+     
+           2. Query based on Asset metadata:
+           http://pipeline.tesco.com/v1/gb/digitalcontent?metadata=title+summary&queryFilter=category:products
     queryParameters:
          id:
            displayName: id

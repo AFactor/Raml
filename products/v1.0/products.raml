@@ -1,0 +1,61 @@
+#%RAML 0.8
+title: Products Pipeline
+version: v1
+mediaType: application/json
+baseUri: http://pipeline.tesco.com/{version}
+traits:
+  - requestHeaders: !include ../../shared/v1.0/traits/requestHeaders.yaml
+schemas:
+  - productsSchema: !include schemas/products.json
+  - productSchema: !include schemas/product.json
+  - errorSchema: !include ../../shared/v1.0/schemas/pipelineError.json 
+/{region}/products/:
+  get:
+   is: [requestHeaders]
+   description: |
+             The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format.
+             Extended product information needed for product detail is not captured here. There is a separate endpoint for that.
+     
+             Example-   
+               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&keyType=TPNC&orderBy=priceAZ
+    
+               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&keyType=TPNB (sort order: default)
+    
+    
+             Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result.
+             In future, it may also call digital content service.
+             
+             The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.
+             
+                          
+             Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the
+             schema outlined.
+       
+   queryParameters:
+     productKey:
+      description: delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline. search by GTIN is for future.
+      type: string
+      required: true
+     keyType:
+      description: type of product key. Possible values:- TPNB, TPNC or GTIN.
+      type: string
+      required: true
+     orderBy:
+      description: Sort by parameter. Possible values:- default,priceAZ,priceZA,TitleAZ,TitleZA
+      type: string
+      required: false
+   responses:
+      200:
+        body:          
+            schema:  productSchema
+            example: !include examples/products.json
+      400:
+        body:
+          application/json:
+            schema:  errorSchema
+            example: !include examples/error4xx.json
+      500:
+        body:
+          application/json:
+            schema:  errorSchema
+            example: !include examples/error5xx.json

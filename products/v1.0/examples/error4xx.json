@@ -1,0 +1,7 @@
+{
+"code" : "PIPELINE-003",
+"message" : "Exception from Enterprise Service",
+"detail" : "[404] - Product(s) not found",
+"source" : "Enterprise Service",
+"timeStamp" : "2014-12-03T10:10:10"
+}

@@ -1,5 +1,5 @@
 usage: Apply this to any method that requires an paginated result set.
-description: Some requests require authentication.
+description: When result set returned by the service contains a large no. of items, the service consumer should invoke the service by setting the pageSize and offset values appropriately.
 queryParameters:
     pageSize:
       description: The number of results per page
@@ -7,7 +7,7 @@ queryParameters:
       example: 20
       required: false
     offset:
-        description: The number of results to skip
+        description: The number of results to skip. It goes along with the pageSize. If offset = 0, the first 20 results will be retuened by the service i.e. first page of the results will be returned. If offset = 20, then results from 21st item to next 20 items will be returned i.e. second page of results will be returned and so on.
         type: number
         required: false
-        example: 20
+        example: 0
