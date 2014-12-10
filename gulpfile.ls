@@ -5,7 +5,7 @@ require! {
 }
 
 gulp.task 'Ramls' ->
-  gulp.src ['product/v1.0/products.raml','Taxonomy/v1.0d/taxonomy.raml','digitalContent/v1.0/digitalcontent.raml']
+  gulp.src ['products/v1.0/products.raml','taxonomy/v1.0/taxonomy.raml','digitalContent/v1.0/digitalcontent.raml','device/v1.0/device.raml']
     .pipe plumber!
     .pipe raml2html!
     .pipe gulp.dest 'published'
