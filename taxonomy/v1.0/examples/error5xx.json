@@ -1,5 +1,7 @@
 {
-  "pipelineErrorCode": "503",
-  "errorMessage": "Gateway timeout connecting to underlying range Service",
-  "errorSource": "Range service"
+"code" : "PIPELINE-005",
+"message" : "Exception from Enterprise Service",
+"detail" : "[5503] - Gateway timeout connecting to underlying enterprise Service",
+"source" : "Enterprise Service",
+"timeStamp" : "2014-12-03T10:10:10"
 }

@@ -18,7 +18,7 @@
 		"productList": {
 			"type":"object",			
 			"required":false,
-			"$ref": "../../../product/v1.0/Schemas/productList.json"			
+			"$ref": "../../../product/v1.0/schemas/productList.json"			
 		}
 	}
 }

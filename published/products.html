@@ -1,4 +1,4 @@
-<!DOCTYPE HTML><html><head><title>Products API documentation</title><meta http-equiv=X-UA-Compatible content="IE=edge"><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=generator content="https://github.com/kevinrenskers/raml2html 0.30.0"><link rel=stylesheet href=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet href=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css><script type=text/javascript src=http://code.jquery.com/jquery-1.11.0.min.js></script><script type=text/javascript src=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js></script><script type=text/javascript src=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js></script><script type=text/javascript>
+<!DOCTYPE HTML><html><head><title>Products Pipeline API documentation</title><meta http-equiv=X-UA-Compatible content="IE=edge"><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=generator content="https://github.com/kevinrenskers/raml2html 0.30.0"><link rel=stylesheet href=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css><link rel=stylesheet href=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css><script type=text/javascript src=http://code.jquery.com/jquery-1.11.0.min.js></script><script type=text/javascript src=http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js></script><script type=text/javascript src=http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js></script><script type=text/javascript>
         $(document).ready(function() {
             $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
                 hljs.highlightBlock(block);
@@ -107,7 +107,7 @@
         .method_description p:last-child {
             margin: 0;
         }
-    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Products API documentation <small>version v1</small></h1><p>http://pipeline.tesco.com/v1</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__products_ class=panel-title>/{region}/products/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__products_><span class=parent></span>/{region}/products/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__products__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__products_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__products__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__products__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/products/</h4></div><div class=modal-body><div class="alert alert-info"><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><ul class="nav nav-tabs"><li class=active><a href=#__region__products__get_request data-toggle=tab>Request</a></li><li><a href=#__region__products__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__products__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>productKey</strong> <em>required (string)</em><p>delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline. search by GTIN is for future.</p></li><li><strong>keyType</strong> <em>required (string)</em><p>type of product key. Possible values:- TPNB, TPNC or GTIN.</p></li><li><strong>orderBy</strong> <em>(string)</em><p>Sort by parameter. Possible values:- default,priceAZ,priceZA,TitleAZ,TitleZA</p></li></ul></div><div class=tab-pane id=__region__products__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Products Pipeline API documentation <small>version v1</small></h1><p>http://pipeline.tesco.com/v1</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__products_ class=panel-title>/{region}/products/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__products_><span class=parent></span>/{region}/products/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__products__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__products_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__products__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__products__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/products/</h4></div><div class=modal-body><div class="alert alert-info"><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><ul class="nav nav-tabs"><li class=active><a href=#__region__products__get_request data-toggle=tab>Request</a></li><li><a href=#__region__products__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__products__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>productKey</strong> <em>required (string)</em><p>delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline. search by GTIN is for future.</p></li><li><strong>keyType</strong> <em>required (string)</em><p>type of product key. Possible values:- TPNB, TPNC or GTIN.</p></li><li><strong>orderBy</strong> <em>(string)</em><p>Sort by parameter. Possible values:- default,priceAZ,priceZA,TitleAZ,TitleZA</p></li></ul></div><div class=tab-pane id=__region__products__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",
   "additionalProperties": false,
@@ -388,45 +388,77 @@
   }
 ]
 </code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/400 target=_blank>400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
-  "title": "Error4xx",
+  "title": "Pipeline Error Schema",
   "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
   "properties": {
-    "pipelineErrorCode": {
+    "code": {
       "required": true,
+      "description":"Pipeline Error Code",
       "type": "string"
     },
-    "errorMessage": {
+    "message": {
       "required": true,
+      "description":"Pipeline Error Message",
       "type": "string"
     },
-    "errorSource": {
+    "detail": {
+      "required": false,
+      "description":"Additional details from the underlying service. At the minimum, a concatinated string of [Error Code] : [Error Message] from the underlying service",
+      "type": "string"
+    },
+    "source": {
       "required": true,
+      "description":"Source from where the exception originated - Pipeline or Underlying Service",
+      "type": "string"
+    },
+    "timeStamp": {
+      "required": true,
+      "description":"Pipeline Server time stamp when this exception was thrown",
       "type": "string"
     }
   }
 }</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
-  "pipelineErrorCode": "404",
-  "errorMessage": "Product(s) not found",
-  "errorSource": "Product Service"
+"code" : "PIPELINE-003",
+"message" : "Exception from Enterprise Service",
+"detail" : "[404] - Product(s) not found",
+"source" : "Enterprise Service",
+"timeStamp" : "2014-12-03T10:10:10"
 }</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/500 target=_blank>500</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
-  "title": "Error4xx",
+  "title": "Pipeline Error Schema",
   "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
   "properties": {
-    "pipelineErrorCode": {
+    "code": {
       "required": true,
+      "description":"Pipeline Error Code",
       "type": "string"
     },
-    "errorMessage": {
+    "message": {
       "required": true,
+      "description":"Pipeline Error Message",
       "type": "string"
     },
-    "errorSource": {
+    "detail": {
+      "required": false,
+      "description":"Additional details from the underlying service. At the minimum, a concatinated string of [Error Code] : [Error Message] from the underlying service",
+      "type": "string"
+    },
+    "source": {
       "required": true,
+      "description":"Source from where the exception originated - Pipeline or Underlying Service",
+      "type": "string"
+    },
+    "timeStamp": {
+      "required": true,
+      "description":"Pipeline Server time stamp when this exception was thrown",
       "type": "string"
     }
   }
 }</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
-  "pipelineErrorCode": "503",
-  "errorMessage": "Gateway timeout connecting to underlying Product Service",
-  "errorSource": "Product service"
+"code" : "PIPELINE-002",
+"message" : "Exception from Enterprise Service",
+"detail" : "[503] - Gateway timeout connecting to underlying Product Service",
+"source" : "Enterprise Service",
+"timeStamp" : "2014-12-03T10:10:10"
 }</code></pre></small></p></div></div></div></div></div></div></div></div></div></div></div><div class=col-md-3><div id=sidebar class="hidden-print affix" role=complementary><ul class="nav nav-pills nav-stacked"><li><a href=#__region__products_>/{region}/products/</a></li></ul></div></div></div></div></body></html>
