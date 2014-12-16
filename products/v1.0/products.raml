@@ -6,23 +6,25 @@ baseUri: http://pipeline.tesco.com/{version}
 traits:
   - requestHeaders: !include ../../shared/v1.0/traits/requestHeaders.yaml
 schemas:
-  - productsSchema: !include schemas/products.json
-  - productSchema: !include schemas/product.json
+  - productsSchema: !include schemas/productList.json
   - errorSchema: !include ../../shared/v1.0/schemas/pipelineError.json 
 /{region}/products/:
   get:
    is: [requestHeaders]
    description: |
-             The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format.
+             The purpose of this endpoint is to search for product info based on certain keys. Key could be a delimited string of TPNBs, TPNCs, GTINs, Taxonomy IDs, etc.
              Extended product information needed for product detail is not captured here. There is a separate endpoint for that.
-     
-             Example-   
-               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&keyType=TPNC&orderBy=priceAZ
     
-               http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&keyType=TPNB (sort order: default)
+             Examples:
+             
+             1. Fetch Products based on TPNC and sort by price - high to low:  
+               http://pipeline.tesco.com/v1/gb/products?key=677000+572367&keyType=TPNC&orderBy=priceAZ
+               
+             2. Fetch Products based on Taxonomy ID:      
+               http://pipeline.tesco.com/v1/gb/products?key=4294793660&keyType=TAXONOMY_ID (sort order: default)
     
     
-             Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result.
+             Based on the current design this pipe will call range, product, price, promotion and productList (if logged in user) service to aggregate the result.
              In future, it may also call digital content service.
              
              The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.
@@ -32,22 +34,24 @@ schemas:
              schema outlined.
        
    queryParameters:
-     productKey:
-      description: delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline. search by GTIN is for future.
+     key:
+      description: Search Key - plus sign delimited string of keys (id1+id2+id3). Max number of identifiers to be sent down are configurable in pipeline.
       type: string
       required: true
      keyType:
-      description: type of product key. Possible values:- TPNB, TPNC or GTIN.
+      description: type of key.
       type: string
+      "enum": [ "TPNB", "TPNC", "GTIN", "TAXONOMY_ID" ]
       required: true
      orderBy:
-      description: Sort by parameter. Possible values:- default,priceAZ,priceZA,TitleAZ,TitleZA
+      description: Sort by parameter.
       type: string
+      "enum": [ "default", "priceAZ", "priceZA", "TitleAZ", "TitleZA" ]
       required: false
    responses:
       200:
         body:          
-            schema:  productSchema
+            schema:  productsSchema
             example: !include examples/products.json
       400:
         body:

@@ -1,4 +1,6 @@
-[
+{
+  "totalCount": 2,
+  "items":[
   {
     "onlineExclusive": false,
     "TPNC": "2442424",
@@ -63,3 +65,4 @@
     ]
   }
 ]
+}
