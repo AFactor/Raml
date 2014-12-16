@@ -107,222 +107,29 @@
         .method_description p:last-child {
             margin: 0;
         }
-    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Products Pipeline API documentation <small>version v1</small></h1><p>http://pipeline.tesco.com/v1</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__products_ class=panel-title>/{region}/products/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__products_><span class=parent></span>/{region}/products/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__products__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__products_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__products__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__products__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/products/</h4></div><div class=modal-body><div class="alert alert-info"><p>The purpose of this endpoint is to get the product info against product id(s). Multiple product identifiers have to be sent in a delimited format. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Example-<br><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p><p><a href="http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB">http://pipeline.tesco.com/v1/uk/products?productKey=677000+572367&amp;keyType=TPNB</a> (sort order: default)</p><p>Based on the current design this pipe will call product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><ul class="nav nav-tabs"><li class=active><a href=#__region__products__get_request data-toggle=tab>Request</a></li><li><a href=#__region__products__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__products__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>productKey</strong> <em>required (string)</em><p>delimited TPNB, TPNC or GTIN. max number of product identifiers to be sent down are configurable in pipeline. search by GTIN is for future.</p></li><li><strong>keyType</strong> <em>required (string)</em><p>type of product key. Possible values:- TPNB, TPNC or GTIN.</p></li><li><strong>orderBy</strong> <em>(string)</em><p>Sort by parameter. Possible values:- default,priceAZ,priceZA,TitleAZ,TitleZA</p></li></ul></div><div class=tab-pane id=__region__products__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Products Pipeline API documentation <small>version v1</small></h1><p>http://pipeline.tesco.com/v1</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__products_ class=panel-title>/{region}/products/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__products_><span class=parent></span>/{region}/products/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__products__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__products_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__products__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>The purpose of this endpoint is to search for product info based on certain keys. Key could be a delimited string of TPNBs, TPNCs, GTINs, Taxonomy IDs, etc. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Examples:</p><ol><li><p>Fetch Products based on TPNC and sort by price - high to low:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p></li><li><p>Fetch Products based on Taxonomy ID:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID">http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID</a> (sort order: default)</p></li></ol><p>Based on the current design this pipe will call range, product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__products__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/products/</h4></div><div class=modal-body><div class="alert alert-info"><p>The purpose of this endpoint is to search for product info based on certain keys. Key could be a delimited string of TPNBs, TPNCs, GTINs, Taxonomy IDs, etc. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Examples:</p><ol><li><p>Fetch Products based on TPNC and sort by price - high to low:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p></li><li><p>Fetch Products based on Taxonomy ID:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID">http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID</a> (sort order: default)</p></li></ol><p>Based on the current design this pipe will call range, product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><ul class="nav nav-tabs"><li class=active><a href=#__region__products__get_request data-toggle=tab>Request</a></li><li><a href=#__region__products__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__products__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>pageSize</strong> <em>(integer)</em><p>The number of results per page</p><p><small><strong>Example</strong>:<pre><code>20</code></pre></small></p></li><li><strong>offset</strong> <em>(number)</em><p>The number of results to skip. It goes along with the pageSize. If offset = 0, the first 20 results will be retuened by the service i.e. first page of the results will be returned. If offset = 20, then results from 21st item to next 20 items will be returned i.e. second page of results will be returned and so on.</p></li><li><strong>key</strong> <em>required (string)</em><p>Search Key - plus sign delimited string of keys (id1+id2+id3). Max number of identifiers to be sent down are configurable in pipeline.</p></li><li><strong>keyType</strong> <em>required one of (TPNB,TPNC,GTIN,TAXONOMY_ID)</em><p>type of key.</p></li><li><strong>orderBy</strong> <em>one of (default,priceAZ,priceZA,TitleAZ,TitleZA)</em><p>Sort by parameter.</p></li></ul></div><div class=tab-pane id=__region__products__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "productList",
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",
   "additionalProperties": false,
   "required": false,
   "properties": {
-    "onlineExclusive": {
-      "required": true,
-      "description": "product only available for sale on dotcom stores",
-      "type": "boolean"
-    },
-    "TPNC": {
-      "required": true,
-      "type": "string",
-      "description": "product id"
-    },
-    "TPNB": {
-      "required": true,
-      "type": "string",
-      "description": "base product id"
-    },
-    "GTIN": {
-      "required": false,
-      "type": "string",
-      "description": "Global Trade Item Number. As of now, we don&#x27;t have GTIN. However, going forward this will be serviced via enterprise product service"
-    },
-    "customerFriendlyDescription": {
-      "required": true,
-      "type": "string",
-      "description": "title"
-    },
-    "description": {
-      "required": true,
-      "type": "string"
-    },
-    "images": {
-      "required": false,
+    "items": {
       "type": "array",
+      "required": false,
       "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "required": false,
-            "type": "string"
-          },
-          "url": {
-            "required": true,
-            "type": "string"
-          },
-          "width": {
-            "required": true,
-            "type": "integer"
-          },
-          "height": {
-            "required": true,
-            "type": "integer"
-          },
-          "default": {
-            "required": true,
-            "type": "boolean"
-          }
-        }
-      }
+        "$ref": "product.json"
+      },
+      "Description": "type owned by product pipeline"
     },
-    "brand": {
-      "required": true,
-      "type": "string"
-    },
-    "status": {
-      "required": true,
-      "type": "string",
-      "description": "Product status. Possible values.: AvailableForSale,PermanentlyUnavailable, TemporarilyUnavailable.  "
-    },
-    "productInList": {
-      "required": false,
-      "type": "object",
-      "properties": {
-        "favourites": {
-          "required": true,
-          "type": "boolean",
-          "description": "Flag to denote whether product is in favourites. Not valid for anonymous user journey"
-        },
-        "shoppingList": {
-          "required": false,
-          "type": "boolean"
-        }
-      }
-    },
-    "bulkBuy": {
-      "required": false,
-      "description": "Bulk buy limit attributes",
-      "type": "object",
-      "properties": {
-        "groupLimitId": {
-          "required": false,
-          "type": "string"
-        },
-        "groupLimit": {
-          "required": false,
-          "type": "integer"
-        },
-        "limit": {
-          "required": true,
-          "type": "integer"
-        }
-      }
-    },
-    "primaryTaxonomyId": {
-      "required": true,
-      "description": "The taxonomy node id of the product.",
-      "type": "string"
-    },
-    "primaryTaxonomyName": {
-      "required": true,
-      "type": "string"
-    },
-    "restrictedDeliveryGroup": {
-      "required": false,
-      "type": "string"
-    },
-    "restrictedDeliveryTime": {
-      "required": false,
-      "type": "string"
-    },
-    "sellByType": {
-      "required": true,
-      "description": "Possible values. Quantity, Weight, QuantityOrWeight, CatchWeight",
-      "type": "string"
-    },
-    "catchWeight": {
-      "required": false,
-      "description": "CatchWeight values. MinWeight and MaxWeight will provide the range and increment will provide the possible values",
-      "type": "object",
-      "properties": {
-        "minWeight": {
-          "required": true,
-          "type": "number"
-        },
-        "maxWeight": {
-          "required": true,
-          "type": "number"
-        },
-        "increment": {
-          "required": true,
-          "type": "number"
-        }
-      }
-    },
-    "price": {
-      "required": true,
-      "type": "object",
-      "properties": {
-        "currency": {
-          "required": true,
-          "type": "string"
-        },
-        "sellingUOM": {
-          "required": true,
-          "type": "string"
-        },
-        "sellingPrice": {
-          "required": true,
-          "type": "number"
-        },
-        "perUnit": {
-          "required": true,
-          "type": "number"
-        },
-        "regularPrice": {
-          "required": false,
-          "description": "To get the regular full price of the product. Currently not supported by GAPI, but supported by enterprise Price service.",
-          "type": "number"
-        }
-      }
-    },
-    "offers": {
-      "required": false,
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "required": true,
-            "type": "string"
-          },
-          "name": {
-            "required": true,
-            "type": "string"
-          },
-          "category": {
-            "required": true,
-            "description": "possible values. Cashreward, ClubCardPoints",
-            "type": "string"
-          },
-          "validFrom": {
-            "required": true,
-            "type": "string"
-          },
-          "validTo": {
-            "required": true,
-            "type": "string"
-          },
-          "customerFriendlyDescription": {
-            "required": true,
-            "type": "string"
-          },
-          "iconType": {
-            "required": true,
-            "description": "Promotion Sash icon type",
-            "type": "string"
-          }
-        }
-      }
+    "totalCount": {
+      "type": "integer",
+      "required": true
     }
   }
-}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>[
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "totalCount": 2,
+  "items":[
   {
     "onlineExclusive": false,
     "TPNC": "2442424",
@@ -387,7 +194,7 @@
     ]
   }
 ]
-</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/400 target=_blank>400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+}</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/400 target=_blank>400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
   "title": "Pipeline Error Schema",
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",

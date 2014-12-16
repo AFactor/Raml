@@ -5,12 +5,13 @@ mediaType: application/json
 baseUri: http://pipeline.tesco.com/{version}
 traits:
   - requestHeaders: !include ../../shared/v1.0/traits/requestHeaders.yaml
+  - paginated: !include ../../shared/v1.0/traits/paginated.yaml
 schemas:
   - productsSchema: !include schemas/productList.json
   - errorSchema: !include ../../shared/v1.0/schemas/pipelineError.json 
 /{region}/products/:
   get:
-   is: [requestHeaders]
+   is: [requestHeaders, paginated ]
    description: |
              The purpose of this endpoint is to search for product info based on certain keys. Key could be a delimited string of TPNBs, TPNCs, GTINs, Taxonomy IDs, etc.
              Extended product information needed for product detail is not captured here. There is a separate endpoint for that.
