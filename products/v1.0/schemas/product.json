@@ -3,12 +3,7 @@
   "$schema": "http://json-schema.org/draft-03/schema",
   "additionalProperties": false,
   "required": false,
-  "properties": {
-    "onlineExclusive": {
-      "required": true,
-      "description": "product only available for sale on dotcom stores",
-      "type": "boolean"
-    },
+  "properties": {   
     "TPNC": {
       "required": true,
       "type": "string",
@@ -109,15 +104,7 @@
       "required": true,
       "description": "The taxonomy node id of the product.",
       "type": "string"
-    },
-    "primaryTaxonomyName": {
-      "required": true,
-      "type": "string"
-    },
-    "restrictedDeliveryGroup": {
-      "required": false,
-      "type": "string"
-    },
+    },       
     "restrictedDeliveryTime": {
       "required": false,
       "type": "string"
@@ -182,11 +169,7 @@
           "id": {
             "required": true,
             "type": "string"
-          },
-          "name": {
-            "required": true,
-            "type": "string"
-          },
+          },         
           "category": {
             "required": true,
             "description": "possible values. Cashreward, ClubCardPoints",

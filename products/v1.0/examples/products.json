@@ -1,8 +1,7 @@
 {
   "totalCount": 2,
   "items":[
-  {
-    "onlineExclusive": false,
+  {    
     "TPNC": "2442424",
     "TPNB": "07242424",
     "GTIN": "n/a",
@@ -35,9 +34,7 @@
       "groupLimit": 0,
       "limit": 5
     },
-    "primaryTaxonomyId": "to_3444",
-    "primaryTaxonomyName": "milk bars",
-    "restrictedDeliveryGroup": "n/a",
+    "primaryTaxonomyId": "to_3444",     
     "restrictedDeliveryTime": "n/a",
     "sellByType": "catchWeight",
     "catchWeight": {
@@ -54,8 +51,7 @@
     },
     "offers": [
       {
-        "id": "4222/1",
-        "name": "Buy one get one free",
+        "id": "4222/1",       
         "category": "Cashreward",
         "validFrom": "2014-11-21T14:11:56.4339045+00:00",
         "validTo": "2014-11-24T14:11:56.4349046+00:00",
