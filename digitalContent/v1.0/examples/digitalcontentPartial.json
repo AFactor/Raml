@@ -1,0 +1,28 @@
+{
+   "totalCount":"10",
+   "assets":[
+      {
+         "uri":"/document/id/81c9c1fdc3a9c276d586ef3b7ad62acf",
+         "id":"81c9c1fdc3a9c276d586ef3b7ad62acf",
+         "relatedAssets":[
+            {
+               "uri":"/document/id/829753a9c276d586ef3b7ad62acf",
+               "content":"text content",
+               "id":"81c9c1fdc3a9c276d586ef3b2945097ad62acf"
+            }
+         ]
+      },
+	  {
+         "uri":"/document/id/81c9c1fdc3a9c276d586ef3b7ad62acf",
+         "content":"text content",
+         "id":"81c9c1fdc3a9c276d586ef3b7ad62acf",
+         "relatedAssets":[
+            {
+               "uri":"/document/id/829753a9c276d586ef3b7ad62acf",
+               "content":"text content",
+               "id":"81c9c1fdc3a9c276d586ef3b2945097ad62acf"
+            }
+         ]
+      }
+   ]
+}

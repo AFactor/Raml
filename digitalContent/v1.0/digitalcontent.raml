@@ -14,20 +14,16 @@ schemas:
     is: [requestHeaders, paginated ]
     description: |
            Digital Content Pipeline will call into the Digital Content API to fetch the marketing content and assets that will be rendered on the UI.
+           The query params - metadata and queryFilter - are mutually exclusive. One and only one of these two query params is mandatory.
+           
            Examples:
+           1. Based on queryFilter:
+             http://pipeline.tesco.com/v1/gb/digitalcontent?queryFilter=TeamSite/Templating/DCR/Type:header/logo
      
-           1. Based on Asset ID:
-           http://pipeline.tesco.com/v1/gb/digitalcontent?id=ASSET_ID_00011+ASSET_ID_11234+ASSET_ID_998034
-     
-           2. Query based on Asset metadata:
-           http://pipeline.tesco.com/v1/gb/digitalcontent?metadata=title+summary&queryFilter=category:products
+           2. Query based on metadata:
+           http://pipeline.tesco.com/v1/gb/digitalcontent?metadata=title+summary
+           
     queryParameters:
-         id:
-           displayName: id
-           type: string
-           description: Asset Ids separated by + delimiter
-           example: ASST_ID_00011+ASST_ID_11234+ASST_ID_998034
-           required: true
          customerSegment:
            displayName: customerSegment
            type: string
@@ -52,12 +48,29 @@ schemas:
            description: Device family
            example: PC, Mobile, Tablet, etc.
            required: false
+         traverse:
+           displayName: traverse
+           type: string
+           description: This will be one of the metadata field list. Multiple fields can be specified in a + delimited list 
+           example: AbsoluteVpath+AreaRelativePath
+           required: true
+         projectName:
+           displayName: projectName
+           type: string
+           description: Name of the project requesting digital content
+           example: horizon
+           required: true
     responses:   
       200:
         body:
           application/json:
             schema: digitalcontentsSchema
             example: !include ./examples/digitalcontent.json
+      206:
+        body:
+          application/json:
+            schema: digitalcontentsSchema
+            example: !include ./examples/digitalcontentPartial.json
       400:
         body:
           application/json:
