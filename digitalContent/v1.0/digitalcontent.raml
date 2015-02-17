@@ -48,16 +48,16 @@ schemas:
            description: Device family
            example: PC, Mobile, Tablet, etc.
            required: false
-         traverse:
-           displayName: traverse
+         relatedAssetsBy:
+           displayName: relatedAssetsBy
            type: string
            description: This will be one of the metadata field list. Multiple fields can be specified in a + delimited list 
            example: AbsoluteVpath+AreaRelativePath
            required: true
-         projectName:
-           displayName: projectName
+         catalogName:
+           displayName: catalogName
            type: string
-           description: Name of the project requesting digital content
+           description: Name of the catalog from where to fetch digital content
            example: horizon
            required: true
     responses:   
