@@ -12,45 +12,49 @@ schemas:
   get:
    is: [requestHeaders]
    description: |
-             The purpose of this endpoint is to search for product info based on certain keys. Key could be a delimited string of TPNBs, TPNCs.
-             Extended product information needed for product detail is not captured here. There is a separate endpoint for that.
+             The purpose of this pipeline is to fetch product info based on one or more identifiers of a single type. Identifiers are TPNBs and TPNCs. The maximum number of identifiers which can be queried in a single request is 20. One of the supported Identifier type is mandatory to be sent into the pipeline - Either of TPNB or TPNC is mandatory.
+             
+             Only one identifier type should be sent in a single request - All IDs are either TPNCs or TPNBs.
     
              Examples:
              
-             1. Fetch Products based on TPNC and sort by price - high to low:  
-               http://pipeline.tesco.com/v1/gb/products?key=677000+572367&keyType=TPNC&orderBy=priceAZ
-               
-             2. Fetch Products based on Taxonomy ID:      
-               http://pipeline.tesco.com/v1/gb/products?key=4294793660&keyType=TAXONOMY_ID (sort order: default)
-    
-    
-             Based on the current design this pipe will call range, product, price, promotion and productList (if logged in user) service to aggregate the result.
-             In future, it may also call digital content service.
-             
-             The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.
-             
-                          
-             Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the
-             schema outlined.
+             1. Fetch Product, price and offer details based on a TPNC:  
+               http://pipeline.tesco.com/v1/gb/products?tpnc=67798197
+
+             2. Fetch Product, price and offer details based on multiple TPNBs and sort by price - high to low:  
+               http://pipeline.tesco.com/v1/gb/products?tpnb=67798197&tpnb=67798198&orderByKey=price&orderBy=desc
+                                                 
        
    queryParameters:
-     key:
-      description: Search Key - plus sign delimited string of keys (id1+id2+id3). Max number of identifiers to be sent down are configurable in pipeline.
+     tpnb:
+      description: Tesco Product Number - Base Product (UK Identifier) e.g. 050000304
       type: string
-      required: true
-     keyType:
-      description: type of key.
+      repeat: true
+     tpnc:
+      description: Tesco Product Number - Consumer Unit (UK Identifier) e.g. 257480716.
       type: string
-      "enum": [ "TPNB", "TPNC", "GTIN", "TAXONOMY_ID" ]
-      required: true
+      repeat: true
+     orderByKey:
+      description: Sort by Field - Sort on "price" or "title"
+      type: string
+      "enum": [ "price", "title" ]
+      required: false
      orderBy:
-      description: Sort by parameter.
+      description: Sort order. "asc" is to sort low to high. "desc" is to sort high to low
       type: string
-      "enum": [ "default", "priceAZ", "priceZA", "TitleAZ", "TitleZA" ]
+      "enum": [ "default", "asc", "desc" ]
       required: false
    responses:
       200:
         body:          
+          application/json:
+            schema:  productsSchema
+            example: !include examples/products.json
+      206:
+        description: |
+          The pipeline has returned a partial response. Either some of the items in the list has been filtered out due to non-availability of mandatory fields defined in the pipeline contract or retrieving optional fields failed. The "Warning" HTTP header will be set in the response which will contain a comma separated list of Product IDs (TPNBs or TPNCs) that have been filtered out in the response. For Ex : Warning: 199 - "67891345,67891333"
+        body:          
+          application/json:
             schema:  productsSchema
             example: !include examples/products.json
       400:
@@ -63,3 +67,4 @@ schemas:
           application/json:
             schema:  errorSchema
             example: !include examples/error5xx.json
+
