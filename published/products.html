@@ -107,7 +107,7 @@
         .method_description p:last-child {
             margin: 0;
         }
-    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Products Pipeline API documentation <small>version v1</small></h1><p>http://pipeline.tesco.com/v1</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__products_ class=panel-title>/{region}/products/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__products_><span class=parent></span>/{region}/products/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__products__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__products_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__products__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>The purpose of this endpoint is to search for product info based on certain keys. Key could be a delimited string of TPNBs, TPNCs, GTINs, Taxonomy IDs, etc. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Examples:</p><ol><li><p>Fetch Products based on TPNC and sort by price - high to low:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p></li><li><p>Fetch Products based on Taxonomy ID:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID">http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID</a> (sort order: default)</p></li></ol><p>Based on the current design this pipe will call range, product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__products__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/products/</h4></div><div class=modal-body><div class="alert alert-info"><p>The purpose of this endpoint is to search for product info based on certain keys. Key could be a delimited string of TPNBs, TPNCs, GTINs, Taxonomy IDs, etc. Extended product information needed for product detail is not captured here. There is a separate endpoint for that.</p><p>Examples:</p><ol><li><p>Fetch Products based on TPNC and sort by price - high to low:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ">http://pipeline.tesco.com/v1/gb/products?key=677000+572367&amp;keyType=TPNC&amp;orderBy=priceAZ</a></p></li><li><p>Fetch Products based on Taxonomy ID:<br><a href="http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID">http://pipeline.tesco.com/v1/gb/products?key=4294793660&amp;keyType=TAXONOMY_ID</a> (sort order: default)</p></li></ol><p>Based on the current design this pipe will call range, product, price, promotion and productList (if logged in user) service to aggregate the result. In future, it may also call digital content service.</p><p>The schema below represents product schema. The idl will always return an array of products. The array of products schema is part of RAML repository.</p><p>Implementation will focus on individual exception scenarios in much more detail with relevant http status codes. However the error details will confirm to the schema outlined.</p></div><ul class="nav nav-tabs"><li class=active><a href=#__region__products__get_request data-toggle=tab>Request</a></li><li><a href=#__region__products__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__products__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>pageSize</strong> <em>(integer)</em><p>The number of results per page</p><p><small><strong>Example</strong>:<pre><code>20</code></pre></small></p></li><li><strong>offset</strong> <em>(number)</em><p>The number of results to skip. It goes along with the pageSize. If offset = 0, the first 20 results will be retuened by the service i.e. first page of the results will be returned. If offset = 20, then results from 21st item to next 20 items will be returned i.e. second page of results will be returned and so on.</p></li><li><strong>key</strong> <em>required (string)</em><p>Search Key - plus sign delimited string of keys (id1+id2+id3). Max number of identifiers to be sent down are configurable in pipeline.</p></li><li><strong>keyType</strong> <em>required one of (TPNB,TPNC,GTIN,TAXONOMY_ID)</em><p>type of key.</p></li><li><strong>orderBy</strong> <em>one of (default,priceAZ,priceZA,TitleAZ,TitleZA)</em><p>Sort by parameter.</p></li></ul></div><div class=tab-pane id=__region__products__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+    </style></head><body data-spy=scroll data-target=#sidebar><div class=container><div class=row><div class=col-md-9 role=main><div class=page-header><h1>Products Pipeline API documentation <small>version v1</small></h1><p>http://pipeline.tesco.com/v1</p></div><div class="panel panel-default"><div class=panel-heading><h3 id=__region__products_ class=panel-title>/{region}/products/</h3></div><div class=panel-body><div class=panel-group><div class="panel panel-white"><div class=panel-heading><h4 class=panel-title><a class=collapsed data-toggle=collapse href=#panel___region__products_><span class=parent></span>/{region}/products/</a> <span class=methods><a href=# data-toggle=modal data-target=#__region__products__get><span class="badge badge_get">get</span></a></span></h4></div><div id=panel___region__products_ class="panel-collapse collapse"><div class=panel-body><div class=list-group><a href=# data-toggle=modal data-target=#__region__products__get class=list-group-item><span class="badge badge_get">get</span><div class=method_description><p>The purpose of this pipeline is to fetch product info based on one or more identifiers of a single type. Identifiers are TPNBs and TPNCs. The maximum number of identifiers which can be queried in a single request is 20. One of the supported Identifier type is mandatory to be sent into the pipeline - Either of TPNB or TPNC is mandatory.</p><p>Only one identifier type should be sent in a single request - All IDs are either TPNCs or TPNBs.</p><p>Examples:</p><ol><li><p>Fetch Product, price and offer details based on a TPNC:<br><a href="http://pipeline.tesco.com/v1/gb/products?tpnc=67798197">http://pipeline.tesco.com/v1/gb/products?tpnc=67798197</a></p></li><li><p>Fetch Product, price and offer details based on multiple TPNBs and sort by price - high to low:<br><a href="http://pipeline.tesco.com/v1/gb/products?tpnb=67798197&amp;tpnb=67798198&amp;orderByKey=price&amp;orderBy=desc">http://pipeline.tesco.com/v1/gb/products?tpnb=67798197&amp;tpnb=67798198&amp;orderByKey=price&amp;orderBy=desc</a></p></li></ol></div><div class=clearfix></div></a></div></div></div><div class="modal fade" tabindex=0 id=__region__products__get><div class=modal-dialog><div class=modal-content><div class=modal-header><button type=button class=close data-dismiss=modal aria-hidden=true>&times;</button><h4 class=modal-title id=myModalLabel><span class="badge badge_get">get</span> <span class=parent></span>/{region}/products/</h4></div><div class=modal-body><div class="alert alert-info"><p>The purpose of this pipeline is to fetch product info based on one or more identifiers of a single type. Identifiers are TPNBs and TPNCs. The maximum number of identifiers which can be queried in a single request is 20. One of the supported Identifier type is mandatory to be sent into the pipeline - Either of TPNB or TPNC is mandatory.</p><p>Only one identifier type should be sent in a single request - All IDs are either TPNCs or TPNBs.</p><p>Examples:</p><ol><li><p>Fetch Product, price and offer details based on a TPNC:<br><a href="http://pipeline.tesco.com/v1/gb/products?tpnc=67798197">http://pipeline.tesco.com/v1/gb/products?tpnc=67798197</a></p></li><li><p>Fetch Product, price and offer details based on multiple TPNBs and sort by price - high to low:<br><a href="http://pipeline.tesco.com/v1/gb/products?tpnb=67798197&amp;tpnb=67798198&amp;orderByKey=price&amp;orderBy=desc">http://pipeline.tesco.com/v1/gb/products?tpnb=67798197&amp;tpnb=67798198&amp;orderByKey=price&amp;orderBy=desc</a></p></li></ol></div><ul class="nav nav-tabs"><li class=active><a href=#__region__products__get_request data-toggle=tab>Request</a></li><li><a href=#__region__products__get_response data-toggle=tab>Response</a></li></ul><div class=tab-content><div class="tab-pane active" id=__region__products__get_request><h3>URI Parameters</h3><ul><li><strong>region</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Proxy-Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>d2b2a2a8-2adc-4492-88af-774df475b9fd</code></pre></small></p></li><li><strong>user-agent</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</code></pre></small></p></li><li><strong>Accept-Language</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>en-GB</code></pre></small></p></li><li><strong>Accept</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>text/json</code></pre></small></p></li><li><strong>Authorization</strong>: <em>(string)</em><p><small><strong>Example</strong>:<pre><code>none if annonymous user journey.</code></pre></small></p></li></ul><h3>Query Parameters</h3><ul><li><strong>tpnb</strong> <em>(string)</em><p>Tesco Product Number - Base Product (UK Identifier) e.g. 050000304</p></li><li><strong>tpnc</strong> <em>(string)</em><p>Tesco Product Number - Consumer Unit (UK Identifier) e.g. 257480716.</p></li><li><strong>orderByKey</strong> <em>one of (price,title)</em><p>Sort by Field - Sort on "price" or "title"</p></li><li><strong>orderBy</strong> <em>one of (asc,desc)</em><p>Sort order. "asc" is to sort low to high. "desc" is to sort high to low</p></li></ul></div><div class=tab-pane id=__region__products__get_response><h2>HTTP status code <a href=http://httpstatus.es/200 target=_blank>200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
   "title": "productList",
   "type": "object",
   "$schema": "http://json-schema.org/draft-03/schema",
@@ -130,8 +130,7 @@
 }</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
   "totalCount": 2,
   "items":[
-  {
-    "onlineExclusive": false,
+  {    
     "TPNC": "2442424",
     "TPNB": "07242424",
     "GTIN": "n/a",
@@ -164,9 +163,7 @@
       "groupLimit": 0,
       "limit": 5
     },
-    "primaryTaxonomyId": "to_3444",
-    "primaryTaxonomyName": "milk bars",
-    "restrictedDeliveryGroup": "n/a",
+    "primaryTaxonomyId": "to_3444",     
     "restrictedDeliveryTime": "n/a",
     "sellByType": "catchWeight",
     "catchWeight": {
@@ -183,8 +180,90 @@
     },
     "offers": [
       {
-        "id": "4222/1",
-        "name": "Buy one get one free",
+        "id": "4222/1",       
+        "category": "Cashreward",
+        "validFrom": "2014-11-21T14:11:56.4339045+00:00",
+        "validTo": "2014-11-24T14:11:56.4349046+00:00",
+        "customerFriendlyDescription": "Buy 1 Get 1",
+        "iconType": "2For1"
+      }
+    ]
+  }
+]
+}</code></pre></small></p><h2>HTTP status code <a href=http://httpstatus.es/206 target=_blank>206</a></h2><p>The pipeline has returned a partial response. Either some of the items in the list has been filtered out due to non-availability of mandatory fields defined in the pipeline contract or retrieving optional fields failed. The "Warning" HTTP header will be set in the response which will contain a comma separated list of Product IDs (TPNBs or TPNCs) that have been filtered out in the response. For Ex : Warning: 199 - "67891345,67891333"</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><small><strong>Schema</strong>:<pre><code>{
+  "title": "productList",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "additionalProperties": false,
+  "required": false,
+  "properties": {
+    "items": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "$ref": "product.json"
+      },
+      "Description": "type owned by product pipeline"
+    },
+    "totalCount": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}</code></pre></small></p><p><small><strong>Example</strong>:<pre><code>{
+  "totalCount": 2,
+  "items":[
+  {    
+    "TPNC": "2442424",
+    "TPNB": "07242424",
+    "GTIN": "n/a",
+    "customerFriendlyDescription": "nestle milk choc",
+    "description": "nestle milk choc",
+    "images": [
+      {
+        "id": null,
+        "url": "../small.jpeg",
+        "width": 10,
+        "height": 20,
+        "default": false
+      },
+      {
+        "id": "med",
+        "url": "../med.jpeg",
+        "width": 90,
+        "height": 70,
+        "default": true
+      }
+    ],
+    "brand": "nestle",
+    "status": "AvailableForSale",
+    "productInList": {
+      "favourites": false,
+      "shoppingList": false
+    },
+    "bulkBuy": {
+      "groupLimitId": "n/a",
+      "groupLimit": 0,
+      "limit": 5
+    },
+    "primaryTaxonomyId": "to_3444",     
+    "restrictedDeliveryTime": "n/a",
+    "sellByType": "catchWeight",
+    "catchWeight": {
+      "minWeight": 1,
+      "maxWeight": 3.5,
+      "increment": 0.5
+    },
+    "price": {
+      "currency": "GBP",
+      "sellingUOM": "EACH",
+      "sellingPrice": 1.52,
+      "perUnit": 1.52,
+      "regularPrice": 0.0
+    },
+    "offers": [
+      {
+        "id": "4222/1",       
         "category": "Cashreward",
         "validFrom": "2014-11-21T14:11:56.4339045+00:00",
         "validTo": "2014-11-24T14:11:56.4349046+00:00",
