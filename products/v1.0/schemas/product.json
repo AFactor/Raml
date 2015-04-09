@@ -29,9 +29,9 @@
       "type": "string"
     },
     "HasCheaperAlternatives": {
-      "required": true,
+      "required": false,
       "type": "string",
-      "description": "product id"
+      "description": "alternate products that are cheaper"
     },
     "images": {
       "required": false,
