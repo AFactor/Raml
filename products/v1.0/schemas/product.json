@@ -28,6 +28,11 @@
       "required": true,
       "type": "string"
     },
+    "HasCheaperAlternatives": {
+      "required": true,
+      "type": "string",
+      "description": "product id"
+    },
     "images": {
       "required": false,
       "type": "array",
